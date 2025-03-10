@@ -1,4 +1,4 @@
-# wordle-mini-project
+# hangman-mini-project
 
 ## To compile code
 All code must be compiled before you can run it.  To compile means that you are converting your C++ code into a language that the computer can understand (e.g., binary).  To compile C++ code, run the following command in a terminal:
@@ -31,52 +31,30 @@ Mr. Vu has provided you with custom procedures that work specifically with C++ v
 |`int length(vec)`|Returns the number of elements in the vector.|
 
 # Instructions - Wordle Clone
-Do the following in the file named `wordle.cpp`.
+Do the following in the file named `hangman.cpp`.
 
-You will create a simpler version of the Wordle game.  Players are tasked with correctly guessing a sequence of four (4) numbers.  After every guess, the program will display a hint.  The hint will display
-* An "O" if the number is in the correct spot in the sequence
-* An "X" if the number is not in the correct spot in the sequence
+You will create a simpler version of the Hangman game.  Players are tasked with correctly guessing an eight-letter word.  The program should display the a hint formatted in the following way after each guess:
+* An "_" if the letter is not in the word.
+* The letter itself if the letter is in the word.
 
-Note that this is simpler than the actual Wordle game, because you are NOT checking if a number is correct, but in the wrong spot.  It is ONLY either correct and in the correct spot, or it is in the wrong spot.
+If you wish, you can also print out an actual hangman person after each guess.  See [this link](https://cplusplus.com/forum/beginner/221193/) for an example of what you could print.
 
-For example, if the sequence is `[1, 2, 3, 4]`:
-|Guess|Hint|Description|
-|---|---|---|
-|`[1, 1, 1, 1]`|`[O, X, X, X]`|Only the first 1 is in the correct spot|
-|`[8, 6, 3, 5]`|`[X, X, O, X]`|Only the 3 is in the correct spot|
-|`[1, 4, 3, 7]`|`[O, X, O, X]`|The 1 and 3 are in the correct spot.  The 4 is in the sequence, but not in the correct spot (it should be a 2), and so we see an "X"|
-|`[1, 2, 3, 4]`|`[O, O, O, O]`|All 4 numbers are correct|
-
-Duplicate numbers are allowed.
-
-## Hint
-* To create random numbers between 0 - 9, add the following to your code
-```c++
-#include <cstdlib>
-#include <time>
-
-int main()
-{
-    srand(time(0));    // seeds our random number generator
-    int random_num = rand() % 10;    // random number between 0 and 9
-
-    return 0;
-}
-```
+For example, if the word is `["e","d","u","c","a","t","i","o","n"]`:
+|Guess|Hint|
+|---|---|
+|`"d"`|`["_", "d", "_", "_", "_", "_", "_", "_", "_"]`|
+|`"e"`|`["e", "d", "_", "_", "_", "_", "_", "_", "_"]`|
+|`"a"`|`["e", "d", "_", "_", "a", "_", "_", "_", "_"]`|
 
 ## Program Requirements
-* Computer should generate 4 random numbers from 1 - 9 as the "Secret Code".
-* User should be prompted for their guess of those four numbers.
-* After they provide their full guess, the user is told how many are correct.
-* As long as the user does not get all four correct, they keep getting asked for their guess.
-* After the user finally gets all of them correct (yes - all four), they are congratulated and then told how many tries it took them.
+* Computer should get a random word from the `wordList` to use as the secret word.
+* User should be prompted to guess a letter.
+* The user should be presented with either a hint if the letter is correct, or a message (or image) if the letter is not present in the word.
+* The user should then be prompted for whether or not they want to guess the word.
+    * If they answer `"y"`, then they can try and guess the word.
+    * If they answer `"n"`, then they are prompted again to guess another letter.
+* As long as the user still has lives (the man has not been hanged yet) and if the word has not yet been guessed, then the game will play.
+* After the user finally guesses the word, or if they run out of lives, then the game ends.
 
 Starter code has been provided for you.  You are free to use it, or solve the problem in a different way.  In the starter code, you can complete the program by writing three procedures
-* `std::vector<int> createSecret()` - This procedure takes no parameters, and returns the secret code, which is a vector of ints.  You can give this procedure a parameter when doing the extension problem.
-* `std::vector<std::string> getHint(std::vector<int> secret, std::vector<int> guess)` - This procedure takes in the secret code and the user guess, and returns the hint which is a vector of `std::string`.  The list is filled with either `"O"` or `"X"`.
-* `bool winGame(std::vector<int> secret, std::vector<int> guess)` - This procedure takes in the secret code and the user guess and returns `true` if they match, and `false` otherwise.  Alternatively, you could also change the procedure to take in the hint as a single parameter, and determine whether you win based off of the hint instead.
-
-## Extensions
-* Limit users to only 10 attempts to get the "Secret Code"
-* Make the hint like the Wordle hint, where if you get a correct number, but in the wrong spot, it will display a "+" or some other symbol.
-* Allow the user to choose their difficulty.  With easy being a secret code of length 4, and medium or hard having longer secret codes (6, 8, etc.).
+* `std::vector<std::string> getHint(std::vector<std::string> secret, std::string guessLetter)` - This procedure takes in the secret code and the user guess, and returns the hint which is a vector of `std::string`.
