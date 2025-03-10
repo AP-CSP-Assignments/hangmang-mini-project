@@ -56,5 +56,8 @@ For example, if the word is `["e","d","u","c","a","t","i","o","n"]`:
 * As long as the user still has lives (the man has not been hanged yet) and if the word has not yet been guessed, then the game will play.
 * After the user finally guesses the word, or if they run out of lives, then the game ends.
 
-Starter code has been provided for you.  You are free to use it, or solve the problem in a different way.  In the starter code, you can complete the program by writing three procedures
-* `std::vector<std::string> getHint(std::vector<std::string> secret, std::string guessLetter)` - This procedure takes in the secret code and the user guess, and returns the hint which is a vector of `std::string`.
+Starter code has been provided for you.  You are free to use it, or solve the problem in a different way.  In the starter code, you can complete the program by writing this procedure, and doing the following other things.
+*  Note that the `hint` variable is globally accessible to the entire program.
+*  `void getHint(std::string secret, std::string guessLetter)` - This procedure takes in the secret word and the user guess, and updates the `hint` variable, which is globally accessible to the entire program.
+*  Add functionality to ask the user if they want to guess the whole word.
+*  Feel free to print the actual hangman person.
