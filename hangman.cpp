@@ -68,11 +68,7 @@ int main()
         // TODO: Write code that displays the hint; you can either manually display or use the
         // custom display procedure that I wrote for you
         // TODO: Display hangman person if applicable; or you can display the number of lives left
-        if (getHint(answer, letterGuess) == true)    // the guess was in the answer
-        {
-            
-        }
-        else    // the guess is not in the answer
+        if (getHint(answer, letterGuess) == false)
         {
             lives = lives - 1;
             // TODO: Update hangman person if you are using a hangman person
