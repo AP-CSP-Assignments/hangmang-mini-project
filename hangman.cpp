@@ -11,9 +11,9 @@
 #include <string>    // std::string, std::getline
 #include <vector>    // std::vector
 
-std::vector<std::string> hint = {};    // Note that hint is globally available; we want it to be like this for this project
+std::vector<std::string> hint = std::vector<std::string>(8, "_");    // Note that hint is globally available; we want it to be like this for this project
 
-bool getHint(std::string secret, std::string guessLetter)
+bool getHint(std::string secret, char guessLetter)
 {
     // TODO: Write code that updates the hint based on the secret
     // and based on the guess letter.  Use the hint from above.
@@ -54,7 +54,8 @@ int main()
     
     // answer is a random word from the word bank
     std::string answer = wordList[rand() % length(wordList)];
-    std::string guess;
+    char letterGuess;
+    std::string wordGuess = "";
     int lives = 10;
 
     std::cout << "Welcome to Hangman!\n";
@@ -62,12 +63,12 @@ int main()
     while (true)    // TODO: update this condition to run when the game should be played
     {
         std::cout << "\nEnter your guess: ";
-        std::cin >> guess;
+        std::cin >> letterGuess;
         
         // TODO: Write code that displays the hint; you can either manually display or use the
         // custom display procedure that I wrote for you
         // TODO: Display hangman person if applicable; or you can display the number of lives left
-        if (getHint(answer, guess) == true)    // the guess was in the answer
+        if (getHint(answer, letterGuess) == true)    // the guess was in the answer
         {
             
         }
@@ -79,7 +80,7 @@ int main()
         
 
         // TODO: Write code below that asks you whether you want to guess the word
-        // and allow the user to guess the word
+        // and allow the user to guess the word using the variable wordGuess
         std::cout << "Would you like to guess the word (y/n)?\n";
         
     }
