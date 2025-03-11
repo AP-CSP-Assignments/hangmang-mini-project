@@ -13,53 +13,70 @@
 
 std::vector<std::string> hint = {};    // Note that hint is globally available; we want it to be like this for this project
 
-void getHint(std::string secret, std::string guessLetter)
+bool getHint(std::string secret, std::string guessLetter)
 {
-    // Write code that changes values within the hint based on the secret
+    // TODO: Write code that updates the hint based on the secret
     // and based on the guess letter.  Use the hint from above.
+
+    // The procedure should return true if the letter was in the word,
+    // and return false if the letter was not in the word.
+    return false;
 }
 
 
 int main()
 {
+    srand(time(0)); // seeding the random number generator
+
+    // Creating a word bank
     std::vector<std::string> wordList = {
-        "Education",
-        "Solution",
-        "Mountain",
-        "Platinum",
-        "Alphabet",
-        "Necklace",
-        "Elevator",
-        "Diamonds",
-        "Fragrant",
-        "Velocity",
-        "Graduate",
-        "Nebraska",
-        "Tropical",
-        "Evidence",
-        "Involved",
-        "Shopping",
-        "Baseball",
-        "Kangaroo",
-        "Horrible",
-        "Animals"
+        "education",
+        "solution",
+        "mountain",
+        "platinum",
+        "qlphabet",
+        "necklace",
+        "elevator",
+        "diamonds",
+        "fragrant",
+        "velocity",
+        "graduate",
+        "nebraska",
+        "tropical",
+        "evidence",
+        "involved",
+        "shopping",
+        "baseball",
+        "kangaroo",
+        "horrible",
+        "animals"
     };
-    srand(time(0));
     
+    // answer is a random word from the word bank
     std::string answer = wordList[rand() % length(wordList)];
     std::string guess;
     int lives = 10;
 
     std::cout << "Welcome to Hangman!\n";
     
-    while (true)    // update this condition to run when the game should be played
+    while (true)    // TODO: update this condition to run when the game should be played
     {
         std::cout << "\nEnter your guess: ";
         std::cin >> guess;
-
-        getHint(answer, guess);
-        display(hint);
-        lives = lives - 1;
+        
+        // TODO: Write code that displays the hint; you can either manually display or use the
+        // custom display procedure that I wrote for you
+        // TODO: Display hangman person if applicable; or you can display the number of lives left
+        if (getHint(answer, guess) == true)    // the guess was in the answer
+        {
+            
+        }
+        else    // the guess is not in the answer
+        {
+            lives = lives - 1;
+            // TODO: Update hangman person if you are using a hangman person
+        }
+        
 
         // TODO: Write code below that asks you whether you want to guess the word
         // and allow the user to guess the word
