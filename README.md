@@ -30,7 +30,7 @@ Mr. Vu has provided you with custom procedures that work specifically with C++ v
 |`void remove(vec, ind)`|Removes the element at `ind` of the vector `vec`.  Elements after the element at `ind` are shifted over to the left.  The size of the vector is decreased by 1.|
 |`int length(vec)`|Returns the number of elements in the vector.|
 
-# Instructions - Wordle Clone
+# Instructions - Hangman Clone
 Do the following in the file named `hangman.cpp`.
 
 You will create a simpler version of the Hangman game.  Players are tasked with correctly guessing an eight-letter word.  The program should display the a hint formatted in the following way after each guess:
