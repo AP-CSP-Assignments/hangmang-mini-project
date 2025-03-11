@@ -58,6 +58,9 @@ For example, if the word is `["e","d","u","c","a","t","i","o","n"]`:
 
 Starter code has been provided for you.  You are free to use it, or solve the problem in a different way.  In the starter code, you can complete the program by writing this procedure, and doing the following other things.
 *  Note that the `hint` variable is globally accessible to the entire program.
-*  `void getHint(std::string secret, std::string guessLetter)` - This procedure takes in the secret word and the user guess, and updates the `hint` variable, which is globally accessible to the entire program.
+*  `bool getHint(std::string secret, std::string guessLetter)` - This procedure takes in the secret word and the user guess, and updates the `hint` variable, which is globally accessible to the entire program.  If the `guessLetter` was present in the `secret`, then return `true` at the end of the procedure.  Otherwise, return `false` to indicate that the guess was incorrect.
 *  Add functionality to ask the user if they want to guess the whole word.
 *  Feel free to print the actual hangman person.
+
+## Extension
+Create a list (`std::vector`) of `std::string` values and add the user guesses (letters only), so that you can display to the user what letters they have already guessed.  You can also give the user a message if they reuse a letter they have already guessed.
