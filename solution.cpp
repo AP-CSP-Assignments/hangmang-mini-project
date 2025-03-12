@@ -94,6 +94,6 @@ int main()
         }
     }
 
-    std::cout << "Some winning or losing message here";
+    std::cout << "The answer was: " << answer << std::endl;
     return 0;
 }
