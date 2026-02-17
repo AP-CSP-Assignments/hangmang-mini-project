@@ -11,9 +11,7 @@
 #include <string>    // std::string, std::getline
 #include <vector>    // std::vector
 
-std::vector<std::string> hint = std::vector<std::string>(8, "_");    // Note that hint is globally available; we want it to be like this for this project
-
-bool getHint(std::string secret, char guessLetter)
+bool getHint(std::vector<std::string> &hint, std::string secret, char guessLetter)
 {
     bool correctGuess = false;
     int index = 0;
@@ -59,6 +57,8 @@ int main()
         "animals"
     };
   
+    std::vector<std::string> hint = std::vector<std::string>(8, "_");
+
     // answer is a random word from the word bank
     std::string answer = wordList[rand() % length(wordList)];
     char guess;
@@ -72,7 +72,7 @@ int main()
         std::cout << "\nEnter your guess: ";
         std::cin >> guess;
         
-        if (!getHint(answer, guess))
+        if (!getHint(hint, answer, guess))
         {
             lives = lives - 1;
         }
